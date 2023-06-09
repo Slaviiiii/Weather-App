@@ -1,0 +1,9 @@
+.hourly-container {
+    background-image: linear-gradient(192deg, #4cbea0, #2f2580);
+    color: #fff;
+    padding: 20px; 
+    border-radius: 10px;
+    height: 8.5rem;
+    width: 49.6vw;
+    margin-top: 1rem;   
+}

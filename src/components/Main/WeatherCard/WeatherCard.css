@@ -1,0 +1,84 @@
+ .card-container {
+    background-image: linear-gradient(135deg, #4cbea0, #2f2580);
+    color: #fff;
+    padding: 20px; 
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    width: 30%;
+    height: 34vh;
+    margin-top: 1rem;   
+}
+
+.weather {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+}
+
+.weather-icon{
+    width: 10rem;
+    margin-top: -1.7rem;
+    margin-bottom: -0.8rem;
+    position: relative;
+    top: 1.3rem;
+}
+
+.temp {
+    font-size: 4.8rem;
+    margin-left: -3.9rem;
+    margin-top: 1rem;
+}
+
+.city {
+    font-size: 1.8rem;
+    margin-top: -0.5rem;
+    word-break: break-all;
+}
+
+.weather-type {
+    font-size: 1.3rem;
+    margin-top: -5.9rem;
+    font-weight: 540;
+}
+
+.details {
+    margin-top: 0.6rem;
+    margin-right: 1.2rem;
+}
+
+.details ul {
+    list-style-type: none;
+    width: 121.5%;
+    margin-left: -0.4rem;
+    margin-bottom: -0.5rem;
+    margin-top: 0.9rem;
+}
+
+.details ul li {  
+    display: flex;
+    justify-content: space-between;
+}
+
+#details-heading {
+    border-bottom: 2px solid #fff;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.details-topic {
+    font-weight: 450;
+}
+
+.details-value {
+    font-weight: 600;
+    margin-left: -0.1rem;
+}
+
+#card-day {
+    position: absolute;
+    bottom: 13.9rem;
+    left: 18rem;
+    font-weight: 800;
+} 
