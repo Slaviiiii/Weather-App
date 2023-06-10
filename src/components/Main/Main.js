@@ -5,13 +5,15 @@ import { HourlyWeather } from "./HourlyWeather/HourlyWeather";
 export const Main = () => {
     return (
         <main>
-            <WeatherCard />
-            
+            <div id="wrapper">
+                <WeatherCard />
+                
             <div className="dayAndHour">
                 <DailyWeather />   
                 <HourlyWeather />
+            </div>      
             </div>
-            
+               
         </main>
     )
 }

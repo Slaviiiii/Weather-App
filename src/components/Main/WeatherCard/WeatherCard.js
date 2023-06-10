@@ -3,30 +3,25 @@ export const WeatherCard = () => {
 
     return (
         <div className="card-container">
-            <div className="weather">     
-                <div className='city-container'>
-                    <h2 className="city">Andorrasdssss, BG</h2>    
-                </div>
-                  
+            <div className="weather"> 
+              <p id='card-day'><i className="fa-solid fa-calendar-days"></i> Sunday</p>
                 <div className='icon-container'>
                     <img src="icons/01d.png" alt="sun" className="weather-icon"/>    
                 </div> 
-                
-                <div className='weather-type-container'>
-                    <p className='weather-type'>sunny</p>     
-                </div>
+                <p className='weather-type'>sunny</p>
 
-                <div>
-                    <p id='card-day'><i class="fa-solid fa-calendar-days"></i> Sunday</p>    
-                </div> 
-                      
                 <div className='temp-container'>
-                    <h1 className="temp">22°c</h1>     
-                </div>      
+                    <h1 className="temp">22°C</h1>     
+                </div>  
+
+                <div className='city-container'>
+                    <p className="city">Andorrasdssss, BG</p> 
+                          
+                </div>             
                 
                 <div className='details'>
+                    <p id='details-heading'>Details</p>
                     <ul>
-                        <li id='details-heading'>Details</li>
                         <li><span className='details-topic'>Feels like</span>  <span className='details-value'>21°c</span></li>
                         <li><span className='details-topic'>Wind</span>  <span className='details-value'>6 m/s</span></li>
                         <li><span className='details-topic'>Humidity</span> <span className='details-value'>36%</span></li>
