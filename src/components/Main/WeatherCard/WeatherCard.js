@@ -1,8 +1,6 @@
 import './WeatherCard.css';
 export const WeatherCard = () => {
 
-    
-
     return (
         <div className="card-container">
             <div className="weather"> 
