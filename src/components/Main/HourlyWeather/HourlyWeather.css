@@ -6,20 +6,3 @@
     padding: 20px; 
     border-radius: 7px;
 }
-
-.hour-container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    border-right: 1px solid #fff;
-}
-
-.hour-container:nth-last-child(1) {
-    border: none;
-} 
-
-.hourly-weather-icon {
-    width: 85%;
-    margin: 0 auto;
-}

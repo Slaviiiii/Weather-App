@@ -1,50 +1,14 @@
 import './HourlyWeather.css';
+import { Hour } from './Hour/Hour';
+
 export const HourlyWeather = (data) => {
-    const  data.forecast?.forecast?.forecastday[0]?.hour[0]?.time;
+    const allHours = [data?.forecast?.forecast?.forecastday[0]?.hour.slice(0, 7)]; 
 
     return (
-        <div className="hourly-container">
-                <div className='hour-container'>
-                    <p>{}</p>
-                    <img src="icons/01d.png" alt="sun" className="hourly-weather-icon"/>    
-                    <h1 className="hourly-temp">22°C</h1>     
-                </div>
-
-                <div className='hour-container'>
-                    <p>Monhourly</p>
-                    <img src="icons/01d.png" alt="sun" className="hourly-weather-icon"/>    
-                    <h1 className="hourly-temp">22°C</h1>     
-                </div>
-
-                <div className='hour-container'>
-                    <p>Monhourly</p>
-                    <img src="icons/01d.png" alt="sun" className="hourly-weather-icon"/>    
-                    <h1 className="hourly-temp">22°C</h1>     
-                </div>
-
-                <div className='hour-container'>
-                    <p>Monhourly</p>
-                    <img src="icons/01d.png" alt="sun" className="hourly-weather-icon"/>    
-                    <h1 className="hourly-temp">22°C</h1>     
-                </div>
-
-                <div className='hour-container'>
-                    <p>Monhourly</p>
-                    <img src="icons/01d.png" alt="sun" className="hourly-weather-icon"/>    
-                    <h1 className="hourly-temp">22°C</h1>     
-                </div>
-
-                <div className='hour-container'>
-                    <p>Monhourly</p>
-                    <img src="icons/01d.png" alt="sun" className="hourly-weather-icon"/>    
-                    <h1 className="hourly-temp">22°C</h1>     
-                </div>
-
-                <div className='hour-container'>
-                    <p>Mondau</p>
-                    <img src="icons/01d.png" alt="sun" className="hourly-weather-icon"/>    
-                    <h1 className="hourly-temp">22°C</h1>     
-                </div>
-        </div>
-    )
+            <div className="hourly-container">
+                  {allHours[0]?.map((item, index) => (
+                    <Hour item={item} key={index}/>
+                   ))} 
+            </div>    
+        )  
 }

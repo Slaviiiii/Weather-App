@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { WeatherContext } from '../../contexts/WeatherContext';
 
 export const Main = () => {
-    const { forecast } = useContext(WeatherContext);
+    const { forecast, isLoading } = useContext(WeatherContext);
     return (
         <main>
             <div id="wrapper">
