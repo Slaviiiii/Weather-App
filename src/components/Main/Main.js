@@ -13,7 +13,7 @@ export const Main = () => {
 
                 <div className="dayAndHour">
                     <DailyWeather />   
-                    <HourlyWeather />
+                    <HourlyWeather forecast={forecast}/>
                 </div>      
             </div>
                
