@@ -1,6 +1,8 @@
 import './WeatherCard.css';
 
 export const WeatherCard = (data) => {
+    const daysArray = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
     const date = data.forecast?.forecast?.forecastday[0].date;
     const icon = data.forecast?.current?.condition?.icon;
     const weatherType = data.forecast?.current.condition.text;
@@ -11,10 +13,13 @@ export const WeatherCard = (data) => {
     const humidity = data.forecast?.current.humidity;
     const pressure = data.forecast?.current.pressure_mb;
 
+    const fixedDate = new Date(date);
+    const day = fixedDate.getDay();
+
     return (
         <div className="card-container">
             <div className="weather"> 
-              <p id='card-day'><i className="fa-solid fa-calendar-days"></i> {date}</p>
+              <p id='card-day'><i className="fa-solid fa-calendar-days"></i> {daysArray[day]}</p>
                 <div className='icon-container'>
                     <img src={icon} alt="sun" className="weather-icon"/>    
                 </div> 

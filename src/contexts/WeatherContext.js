@@ -6,19 +6,23 @@ export const WeatherContext = createContext();
 export const Weather = ({ children }) => {
 
     const [search, setSearch] = useState(null);
-    const [forecast, setForecast] = useState(null);
+    const [hourlyForecast, setHourlyForecast] = useState(null);
+    const [dailyForecast, setDailyForecast] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [fetchError, setFetchError] = useState(false);
 
     useEffect(() => {
         ((async () => {
             try {
-                const sofiaForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=Sofia`);
-                const sofiaForecast = await sofiaForecastRes.json();
+                const sofiaHourlyForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=Sofia`);
+                const sofiaHourlyForecast = await sofiaHourlyForecastRes.json();
+                const sofiaDailyForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=Sofia&days=8`);
+                const sofiaDailyForecast = await sofiaDailyForecastRes.json();
 
-                setForecast({ city: 'Sofia, Bulgaria', ...sofiaForecast });
+                setHourlyForecast({ city: 'Sofia, Bulgaria', ...sofiaHourlyForecast });
+                setDailyForecast({ city: 'Sofia, Bulgaria', ...sofiaDailyForecast })
             }
-            catch(err){
+            catch(err){ 
                 setFetchError(true);
             }
             setIsLoading(false);
@@ -53,10 +57,13 @@ export const Weather = ({ children }) => {
     const onSearchChange = async (searchData) => {
         const [city, country] = searchData.label.split(', ');
         try {
-            const forecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=${city}`);
-            const forecastData = await forecastRes.json();
+            const hourlyForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=${city}`);
+            const hourlyForecastData = await hourlyForecastRes.json();
+            const dailyForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=Sofia&days=8`);
+            const dailyForecastData = await dailyForecastRes.json();
 
-            setForecast({ city: `${city}, ${country}`, ...forecastData });
+            setHourlyForecast({ city: `${city}, ${country}`, ...hourlyForecastData });
+            setDailyForecast({ city: `${city}, ${country}`, ...dailyForecastData })
         }
         catch (err) {
             setFetchError(true);
@@ -70,7 +77,8 @@ export const Weather = ({ children }) => {
     }
 
     const contextValues = {
-        forecast,
+        dailyForecast,
+        hourlyForecast,
         handleOnChange,
         onSearchChange,
         loadOptions,

@@ -1,4 +1,4 @@
-.hour-container {
+.day-container {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -8,16 +8,16 @@
     cursor: pointer;
 }
 
-.hour-container:nth-last-child(1) {
+.day-container:nth-last-child(1) {
     border: none;
-    padding-right: 0.1rem;
-}  
+    padding-right: 0.1rem; 
+} 
 
-.hour-container:nth-last-child(2) {
+.day-container:nth-last-child(2) {
     justify-content: space-between;
-}
+} 
 
-.hourly-weather-icon {
+.daily-weather-icon {
     width: 90%;
     margin: 0 auto;
 }

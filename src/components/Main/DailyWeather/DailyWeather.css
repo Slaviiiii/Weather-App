@@ -1,26 +1,10 @@
 .daily-container {
     display: flex;
-    flex-direction: row;
-    background-image: linear-gradient(192deg, #4cbea0, #2f2580);
+    background-image: linear-gradient(357deg, #4cbea0, #2f2580);
     color: #fff;
     padding: 20px; 
     border-radius: 7px;
+    justify-content: space-between;
+    gap: 1rem;
     margin-top: 1.1rem;
-}
-
-.day-container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    border-right: 1px solid #fff;
-}
-
-.day-container:nth-last-child(1) {
-    border: none;
-} 
-
-.daily-weather-icon {
-    width: 80%;
-    margin: 0 auto;
 }

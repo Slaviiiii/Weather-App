@@ -1,49 +1,20 @@
 import './DailyWeather.css';
-export const DailyWeather = () => {
+import { Day } from '../DailyWeather/Day/Day';
+
+export const DailyWeather = (data) => {
+    const allDays = [data?.forecast?.forecast?.forecastday[1],
+    data?.forecast?.forecast?.forecastday[2],
+    data?.forecast?.forecast?.forecastday[3],
+    data?.forecast?.forecast?.forecastday[4],
+    data?.forecast?.forecast?.forecastday[5],
+    data?.forecast?.forecast?.forecastday[6],
+    data?.forecast?.forecast?.forecastday[7]];
 
     return (
         <div className="daily-container">       
-                <div className='day-container'>
-                    <p>Monday</p>
-                    <img src="icons/01d.png" alt="sun" className="daily-weather-icon"/>    
-                    <h1 className="daily-temp">22°C</h1>     
-                </div>
-
-                <div className='day-container'>
-                    <p>Monday</p>
-                    <img src="icons/01d.png" alt="sun" className="daily-weather-icon"/>    
-                    <h1 className="daily-temp">22°C</h1>     
-                </div>
-
-                <div className='day-container'>
-                    <p>Monday</p>
-                    <img src="icons/01d.png" alt="sun" className="daily-weather-icon"/>    
-                    <h1 className="daily-temp">22°C</h1>     
-                </div>
-
-                <div className='day-container'>
-                    <p>Monday</p>
-                    <img src="icons/01d.png" alt="sun" className="daily-weather-icon"/>    
-                    <h1 className="daily-temp">22°C</h1>     
-                </div>
-
-                <div className='day-container'>
-                    <p>Monday</p>
-                    <img src="icons/01d.png" alt="sun" className="daily-weather-icon"/>    
-                    <h1 className="daily-temp">22°C</h1>     
-                </div>
-
-                <div className='day-container'>
-                    <p>Monday</p>
-                    <img src="icons/01d.png" alt="sun" className="daily-weather-icon"/>    
-                    <h1 className="daily-temp">22°C</h1>     
-                </div>
-
-                <div className='day-container'>
-                    <p>Mondau</p>
-                    <img src="icons/01d.png" alt="sun" className="daily-weather-icon"/>    
-                    <h1 className="daily-temp">22°C</h1>     
-                </div>
+            {allDays?.map((item, index) => (
+        		<Day item={item} key={index}/>
+              ))}  
         </div>
     )
 }

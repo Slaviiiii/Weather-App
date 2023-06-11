@@ -5,15 +5,15 @@ import { useContext } from 'react';
 import { WeatherContext } from '../../contexts/WeatherContext';
 
 export const Main = () => {
-    const { forecast, isLoading } = useContext(WeatherContext);
+    const { dailyForecast, hourlyForecast } = useContext(WeatherContext);
     return (
         <main>
             <div id="wrapper">
-                    <WeatherCard forecast={forecast}/>
+                    <WeatherCard forecast={dailyForecast}/>
 
                 <div className="dayAndHour">
-                    <DailyWeather />   
-                    <HourlyWeather forecast={forecast}/>
+                    <DailyWeather forecast={dailyForecast}/>   
+                    <HourlyWeather forecast={hourlyForecast}/>
                 </div>      
             </div>
                
