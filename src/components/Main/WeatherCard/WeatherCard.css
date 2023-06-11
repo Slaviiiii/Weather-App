@@ -3,7 +3,7 @@
  .card-container {
     background-image: linear-gradient(135deg, #4cbea0, #2f2580);
     color: #fff;
-    padding: 20px 26px 26px 24px; 
+    padding: 20px 35px 18px 35px; 
     border-radius: 7px;   
     margin-top: 1rem;   
 }
@@ -19,9 +19,8 @@
 }
 
 .weather-icon {
-    width: 82%;
+    width: 80%;
     margin: 0 auto;
-    margin-top: -1rem;
 }
 
 .temp-container {
@@ -43,7 +42,8 @@
     font-size: 1.3rem;
     font-weight: 540;
     margin: 0 auto;
-    margin-top: -1rem;
+    margin-top: -0.7rem;
+    word-break: break-all;
 }
 
 .details {
