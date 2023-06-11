@@ -1,32 +1,38 @@
 import { useState } from 'react'
 import { AsyncPaginate } from 'react-select-async-paginate';
-import { GEO_API_URL, geoApiOptions } from '../../api'
+import { GEO_API_URL } from '../../api'
 export const Search = () => {
     const [search, setSearch] = useState(null);
-
+    let initValue = "Sofia";
+ 
     const loadOptions = async (inputValue) => {
         let data = [];
+        let response = "";
         try {
-            const response = await fetch(`${GEO_API_URL}/cities?minPopulation=5000&namePrefix=${inputValue}`, geoApiOptions)
+            if(inputValue === "") {
+                response = await fetch(`${GEO_API_URL}/search.json?key=0062ffea6dda492b9c8204406231006&q=${initValue}`); 
+            } else {
+                response = await fetch(`${GEO_API_URL}/search.json?key=0062ffea6dda492b9c8204406231006&q=${inputValue}`); 
+            }
             const res = await response.json();
-            let filteredData = res.data.filter((obj, index) => res.data.findIndex((item) => item.name === obj.name) === index);
             data = {
-                options: filteredData.map(x => {
+                options: res.map(x => {
                     return {
-                        value: `${x.latitude} ${x.longitude}`,
-                        label: `${x.name}, ${x.countryCode}`
+                        value: `${x.lat} ${x.lon}`,
+                        label: `${x.name}, ${x.country}`
                     }
                 })
             }
-            return data
+            return data;
         }
         catch (err) {
-            console.log(err.message)
+            console.log(err.message);
         }
-
     }
+
     const handleOnChange = (searchValue) => {
-        setSearch(searchValue)
+        setSearch(searchValue);
+
     }
     return (
         <AsyncPaginate
