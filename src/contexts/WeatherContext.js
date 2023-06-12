@@ -9,11 +9,9 @@ export const Weather = ({ children }) => {
     const [hourlyForecast, setHourlyForecast] = useState(null);
     const [dailyForecast, setDailyForecast] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [fetchError, setFetchError] = useState(false);
 
     useEffect(() => {
         ((async () => {
-            try {
                 const sofiaHourlyForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=Sofia`);
                 const sofiaHourlyForecast = await sofiaHourlyForecastRes.json();
                 const sofiaDailyForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=Sofia&days=8`);
@@ -21,24 +19,19 @@ export const Weather = ({ children }) => {
 
                 setHourlyForecast({ city: 'Sofia, Bulgaria', ...sofiaHourlyForecast });
                 setDailyForecast({ city: 'Sofia, Bulgaria', ...sofiaDailyForecast });
-            }
-            catch(err){ 
-                setFetchError(true);
-            }
-            setIsLoading(false);
+                setIsLoading(false);
         }))()
     }, [])
 
     const loadOptions = async (inputValue) => {
-        let initValue = "Sofia";
         let data = [];
         let response = "";
         try {
-            if(inputValue === "") {
-                response = await fetch(`${GEO_API_URL}/search.json?key=${WEATHER_API_KEY}&q=${initValue}`); 
-            } else {
-                response = await fetch(`${GEO_API_URL}/search.json?key=${WEATHER_API_KEY}&q=${inputValue}`); 
-            }
+            // if(inputValue === "") {
+            //     response = await fetch(`${GEO_API_URL}/search.json?key=${WEATHER_API_KEY}&q=${initValue}`); 
+            // } else {
+                response = await fetch(`${GEO_API_URL}/search.json?key=${WEATHER_API_KEY}&q=${inputValue ? inputValue : 'Sofia'}`); 
+            // }
             const res = await response.json();
             data = {
                 options: res.map(x => {
@@ -56,18 +49,14 @@ export const Weather = ({ children }) => {
 
     const onSearchChange = async (searchData) => {
         const [city, country] = searchData.label.split(', ');
-        try {
+
             const hourlyForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=${city}`);
             const hourlyForecastData = await hourlyForecastRes.json();
             const dailyForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=${city}&days=8`);
             const dailyForecastData = await dailyForecastRes.json();
 
             setHourlyForecast({ city: `${city}, ${country}`, ...hourlyForecastData });
-            setDailyForecast({ city: `${city}, ${country}`, ...dailyForecastData });
-        }
-        catch (err) {
-            setFetchError(true);
-        }
+            setDailyForecast({ city: `${city}, ${country}`, ...dailyForecastData })
         setIsLoading(false);
     }
 
@@ -84,7 +73,6 @@ export const Weather = ({ children }) => {
         loadOptions,
         search,
         isLoading,
-        fetchError,
     }
 
     return (

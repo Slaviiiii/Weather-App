@@ -26,7 +26,7 @@ export const WeatherCard = (data) => {
                 <p className='weather-type'>{weatherType}</p>
 
                 <div className='temp-container'>
-                    <h1 className="temp">{temp}°C</h1>     
+                    <h1 className="temp">{Math.round(temp)}°C</h1>     
                 </div>  
 
                 <div className='city-container'>
