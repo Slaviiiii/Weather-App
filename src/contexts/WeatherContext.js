@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { GEO_API_URL, WEATHER_API_KEY } from '../api'
+import { GEO_API_URL, WEATHER_API_KEY } from '../api';
 
 export const WeatherContext = createContext();
 
@@ -20,7 +20,7 @@ export const Weather = ({ children }) => {
                 const sofiaDailyForecast = await sofiaDailyForecastRes.json();
 
                 setHourlyForecast({ city: 'Sofia, Bulgaria', ...sofiaHourlyForecast });
-                setDailyForecast({ city: 'Sofia, Bulgaria', ...sofiaDailyForecast })
+                setDailyForecast({ city: 'Sofia, Bulgaria', ...sofiaDailyForecast });
             }
             catch(err){ 
                 setFetchError(true);
@@ -59,11 +59,11 @@ export const Weather = ({ children }) => {
         try {
             const hourlyForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=${city}`);
             const hourlyForecastData = await hourlyForecastRes.json();
-            const dailyForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=Sofia&days=8`);
+            const dailyForecastRes = await fetch(`${GEO_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=${city}&days=8`);
             const dailyForecastData = await dailyForecastRes.json();
 
             setHourlyForecast({ city: `${city}, ${country}`, ...hourlyForecastData });
-            setDailyForecast({ city: `${city}, ${country}`, ...dailyForecastData })
+            setDailyForecast({ city: `${city}, ${country}`, ...dailyForecastData });
         }
         catch (err) {
             setFetchError(true);
