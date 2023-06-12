@@ -24,23 +24,16 @@ export const Weather = ({ children }) => {
     }, [])
 
     const loadOptions = async (inputValue) => {
-        let data = [];
-        let response = "";
         try {
-            // if(inputValue === "") {
-            //     response = await fetch(`${GEO_API_URL}/search.json?key=${WEATHER_API_KEY}&q=${initValue}`); 
-            // } else {
-                response = await fetch(`${GEO_API_URL}/search.json?key=${WEATHER_API_KEY}&q=${inputValue ? inputValue : 'Sofia'}`); 
-            // }
+            const response = await fetch(`${GEO_API_URL}/search.json?key=${WEATHER_API_KEY}&q=${inputValue ? inputValue : 'Sofia'}`); 
             const res = await response.json();
-            data = {
+            return {
                 options: res.map(x => {
                     return {
                         label: `${x.name}, ${x.country}`
                     }
                 })
             }
-            return data;
         }
         catch (err) {
             console.log(err.message);
